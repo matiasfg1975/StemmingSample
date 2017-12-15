@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using Iveonik.Stemmers;
 
-namespace SteemingSample
+namespace StemmingSample
 {
     class Program
     {
