@@ -1,0 +1,10 @@
+C:\Users\matiasfg\Documents\Mobile Computing\Research\SteemingSample\SteemingSample\bin\Debug\SteemingSample.exe.config
+C:\Users\matiasfg\Documents\Mobile Computing\Research\SteemingSample\SteemingSample\obj\Debug\SteemingSample.csprojResolveAssemblyReference.cache
+C:\Users\matiasfg\Documents\Mobile Computing\Research\SteemingSample\SteemingSample\bin\Debug\SteemingSample.exe
+C:\Users\matiasfg\Documents\Mobile Computing\Research\SteemingSample\SteemingSample\bin\Debug\SteemingSample.pdb
+C:\Users\matiasfg\Documents\Mobile Computing\Research\SteemingSample\SteemingSample\bin\Debug\StemmersNet.dll
+C:\Users\matiasfg\Documents\Mobile Computing\Research\SteemingSample\SteemingSample\obj\Debug\SteemingSample.exe
+C:\Users\matiasfg\Documents\Mobile Computing\Research\SteemingSample\SteemingSample\obj\Debug\SteemingSample.pdb
+C:\Users\matiasfg\Documents\Research\SteemingSample\SteemingSample\bin\Debug\SteemingSample.exe.config
+C:\Users\matiasfg\Documents\Research\SteemingSample\SteemingSample\obj\Debug\SteemingSample.exe
+C:\Users\matiasfg\Documents\Research\SteemingSample\SteemingSample\obj\Debug\SteemingSample.pdb
