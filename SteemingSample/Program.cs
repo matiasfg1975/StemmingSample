@@ -38,7 +38,7 @@ namespace StemmingSample
     public class StemmingSentenceProcessor
     {
 
-        List<SortedSet<string>> mSteemWords = new List<SortedSet<string>>();
+        List<SortedDictionary<string,int>> mSteemWords = new List<SortedDictionary<string,int>>();
         IStemmer mEnglishStemmer = new EnglishStemmer();
         List<string> mExclusionList = new List<string>();
 
@@ -49,12 +49,15 @@ namespace StemmingSample
         public void AddNewSentence(string sentence)
         {
             string[] words = CleanSentence(sentence).Split((char)32);
-            SortedSet<string> values = new SortedSet<string>();
+            SortedDictionary<string, int> values = new SortedDictionary<string, int>();
 
             foreach (string word in words)
             {
-                values.Add(mEnglishStemmer.Stem(word));
-                //Console.WriteLine(word + " --> " + englishStemmer.Stem(word));
+                string stem = mEnglishStemmer.Stem(word);
+                if (!values.ContainsKey(stem))
+                    values.Add(stem, 1);
+                else
+                    values[stem]++;
 
             }
             if (values.Count > 0)
@@ -94,20 +97,20 @@ namespace StemmingSample
         {
             results.Clear();
             int n = 0;
-            foreach (SortedSet<string> words in mSteemWords)
+            foreach (SortedDictionary<string,int> words in mSteemWords)
             {
-                foreach (string tmpValue in words)
+                foreach (var tmpValue in words)
                 {
-                    if (mExclusionList != null && mExclusionList.Count > 0 && !mExclusionList.Contains(tmpValue))
+                    if (mExclusionList == null || mExclusionList.Count == 0 || !mExclusionList.Contains(tmpValue.Key))
                     {
-                        if (!results.ContainsKey(tmpValue))
+                        if (!results.ContainsKey(tmpValue.Key))
                         {
-                            results.Add(tmpValue, new StemmingWordResult(tmpValue, n));
+                            results.Add(tmpValue.Key, new StemmingWordResult(tmpValue.Key, n, tmpValue.Value));
                         }
                         else
                         {
-                            results[tmpValue].Occurances++;
-                            results[tmpValue].AddSentence(n);
+                            results[tmpValue.Key].Occurances += tmpValue.Value;
+                            results[tmpValue.Key].AddSentence(n);
                         }
                     }
                 }
@@ -165,6 +168,13 @@ namespace StemmingSample
                 this.Sentences = new List<int>();
             }
 
+            public StemmingWordResult(string word, int sentence, int occurances )
+            {
+                this.Word = word;
+                this.Occurances = occurances;
+                this.Sentences = new List<int>();
+                this.AddSentence(sentence);
+            }
             public StemmingWordResult(string word, int sentence)
             {
                 this.Word = word;
